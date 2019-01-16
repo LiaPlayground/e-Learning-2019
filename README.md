@@ -151,7 +151,14 @@ at every other Markdown-viewer you will still have a working link to click on.
 !?[I am an image](image-url "info")<!--width="800px"-->
 ```
 
-From our experience, we know that a lot of produced images represent
+From our experience, we know that a lot of produced images represent simple
+diagrams that represent some signal values or some trends. Plotting them with
+Excel, gnuplot, or any other programm, makes it also difficult to change them or
+to translate labels. Well, in LiaScript you can simply create such diagrams by
+using your text editor, such ASCII-art patterns are automatically detected and
+translated into a nicely rendered diagram. Different charaters represent
+different colors and upper and lower-case different sizes. So that you can still
+refer in your text to the red line. For more elaborate examples of ASCII-art, see also the documentation at: Todo
 
 
 ``` HTML
@@ -183,6 +190,28 @@ From our experience, we know that a lot of produced images represent
         | *  * *                       * *  *
         +------------------------------------
         0              x-axis               1
+
+
+
+As you have problably noticed, the code examples contain aditional comments with attributes that are used to style the associated elements, a comment at the beginning of a block (i.e., table, list, paragraph) is used to style the entire block, if it is attached to the end, it can be used to style single elements, such as words or phrases.
+
+
+``` markdown
+<!--style="color: red"-->
+This whole paragraph will be colored in red ;-)<!--
+class="animated infinite bounce"
+style="animation-delay: 3s;"
+-->, but only this smiley is going to start jumping
+after 3 seconds.
+```
+
+        <!--style="color: red"-->
+This whole paragraph will be colored in red ;-)<!--
+  class="animated infinite bounce"
+  style="animation-delay: 3s;"
+-->, but only the smiley is going to start jumping
+after 3 seconds.
+
 
 
 
