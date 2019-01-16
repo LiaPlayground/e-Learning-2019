@@ -27,21 +27,69 @@ the Browser and therefor does not require additional tooling.
 
 ## 1. Introduction
 
-für viele Menschen scheint der Aufwand schwer ein online-kurs zu gestalten schwierigkeiten …
+LiaScript was initially developed within the _"Industrial eLab-Project [^1]"_,
+which aims to make university hardware and laboratories accessable via the
+Internet. But, we soon realized that only by giving remote access to these
+ressources via a fancy website (single WebApp) we will run into problems by
+offering different courses for the same hardware. Our mobile Arduino-Bots could
+be used to teach programming, sensing, navigation, dive into operating systems
+or even to applay artificial intelligence. Thus, the real problem was to develop
+an extendable and adaptable system for creating courses with different
+objectives and for students with differen backgrounds, that only interface with
+our hardware other other external ressources.
+
+elab image ...
+
+
+Shurely, creating an online-course from scratch requires a lot of expertiese in
+various different web technologies such as HTML, JavaScript, CSS, Webservers, Databases, testing with different browsers,
+
+CORS, Websockets and other communication protocolls, probably WebGL. It is
+nearly impossible for a non-programmer to understand all of this stuff before
+developing his own online course. Thus, screen- or pod-casts are not a real
+alternatve, since they are expensive and time consuming in their production, bot
+not easy to adapt, translate, and require additional skills in movie cutting ...
+XXX hier noch Coursea und Udacity einbringen. quasi die Hochglanzverlage,
+zentralisiert für online-kurse mit videos und Drehbüchern.
+
+Fortunatelly there already exist a myriad of different course plattforms that
+want to ease the course development, such as Ilias, edX, Moodle, XXX noch mehr ....
+And how is that kind of simplicity achieved, mostly by offering an integrated
+editor that enable the user to write develop a course with a lot of buttons and
+menues, sub-sub-menues and masks whos only intention is to hide non intuitive
+syntax and semantics of programming languages that are interpreted machine in
+order to display such a course ...
+
+but this approach lacks in exchangeability, of course, system like ILIAS support SCORM (Sharable Content Object Reference Model), but who needs this standard if most of the other systems do not apply it.
+
+**Requirements from an OpenSource perspective**
+
+* versionierung different ressources of truth
+* unterstützung von etwickler teams
+* übersetzung
+* darstellung in verschiedenen formaten
+* integration verschiedener webtechnologien für visualiserung, etc.
+
+
+
 
 Ilias edx und co … bieten zwar Masken zur Kurserstellung aber diese sind eher hinderlich und verlangen bei vielen sachen trotzdem dass man html benötigt, sonst ist man eingeschränkt
 
+für viele Menschen scheint der Aufwand schwer ein online-kurs zu gestalten schwierigkeiten …
+
+
+
+
 Frei? Wenn sich jemand die Mühe gemacht hat, dann kann der Kurs auch einfach heruntergeladen werden??? Eher nicht …
 
-Standards SCORM (Sharable Content Object Reference Model)
+Standards SCORM
 
 authoring tools?
 
 Was ist besser als ein Text-Editor???
 
-A template is a set of styles and page layout settings that determine the appearance of a document. This template matches the printer settings that will be used in the proceeding and the CD-Rom. Use of the template is mandatory.
-Clearly explain the nature of the problem, previous work, purpose, and contribution of the paper.
-    2. How does it
+besser als code in sprachen zu entwickeln, die von computern verstanden werden
+ist es sprachen zu entwickeln, die intentionales coding ermöglichern... der computer muss versuchen herauszufinden, was der mensch im sinne hat ...
 
 ## 2. How Does It Work
 
