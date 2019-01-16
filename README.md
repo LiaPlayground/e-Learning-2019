@@ -16,80 +16,75 @@ comment:  Try to write a short comment about
 
 # Liascript: A "new" Language for creating interactive online Courses
 
-LiaScript is an attempt to enable everyone to create free and interactive open
-educational ressources without the need of being an experienced programmer.
-Instead it aims to bring both parties, software- and course-developers, closer
-together by introducing Open-Source techniques into the Open-courSe development
-process. LiaScript is an extention to Common-Markdown that introduces notations
-for quizzes, suveys, ASCII-art, text2speech, animations, online programming
-amongst others. It comes along with its own Just-In-Time compiler that runs in
-the Browser and therefor does not require additional tooling.
+LiaScript is an attempt to enable everyone to create free and interactive online
+courses, without the need of being an experienced programmer. Instead it aims to
+bring both parties, software- and course-developers, closer together by
+introducing Open-Source techniques into the Open-courSe development process.
+LiaScript was designed to be compatible to Common-Markdown, but it introduces
+lots of language extensions that deal with quizzes, suveys, ASCII-art,
+text2speech, animations, online programming, the integration of JavaScript, etc.
+as well as its own Macro-System that simplifies tedious and repetitive tasks. It
+comes along with its own Just-In-Time compiler that runs in the Browser and
+therefor does not require additional tooling.
 
 ## 1. Introduction
 
 LiaScript was initially developed within the _"Industrial eLab-Project [^1]"_,
 which aims to make university hardware and laboratories accessable via the
 Internet. But, we soon realized that only by giving remote access to these
-ressources via a fancy website (single WebApp) we will run into problems by
-offering different courses for the same hardware. Our mobile Arduino-Bots could
-be used to teach programming, sensing, navigation, dive into operating systems
-or even to applay artificial intelligence. Thus, the real problem was to develop
-an extendable and adaptable system for creating courses with different
-objectives and for students with differen backgrounds, that only interface with
-our hardware other other external ressources.
+ressources via a fancy website  we will run into problems. Our mobile
+Arduino-Bots could be used to teach programming, sensing, navigation, dive into
+operating systems or even to applay artificial intelligence. Thus, the real
+problem was to develop an extendable and adaptable system for creating courses
+(instead of a single WebApp) with different objectives and for students with
+different backgrounds, which only interface with our hardware other other
+external ressources.
 
-elab image ...
-
+TODO: eLab image ...
 
 Shurely, creating an online-course from scratch requires a lot of expertiese in
-various different web technologies such as HTML, JavaScript, CSS, Webservers, Databases, testing with different browsers,
+different web technologies at frontend (e.g., HTML, JavaScript, CSS, testing),
+backend (e.g., webservers, databases), and different communication standards to
+connect both sides (e.g., CRUD, Websockets, AJAX). Hence, it is nearly
+impossible for a non-programmer to understand all of these issues, before
+starting to develop his or her own online course. Screen- or pod-casts are not a
+real alternatve, since they are expensive and time consuming in production, not
+easy to change or translate, and require additional skills in movie cutting.
+That is why plattforms such as Udacity or Coursea invest a lot of effort and
+money in high-quality course productions, which is comparable to movie
+productions, including screenplays, actors, different sets and locations.
 
-CORS, Websockets and other communication protocolls, probably WebGL. It is
-nearly impossible for a non-programmer to understand all of this stuff before
-developing his own online course. Thus, screen- or pod-casts are not a real
-alternatve, since they are expensive and time consuming in their production, bot
-not easy to adapt, translate, and require additional skills in movie cutting ...
-XXX hier noch Coursea und Udacity einbringen. quasi die Hochglanzverlage,
-zentralisiert für online-kurse mit videos und Drehbüchern.
+Fortunatelly, there are also other course plattforms that try to ease the  course development for non-experts, such as Ilias, edX, Moodle,
 
-Fortunatelly there already exist a myriad of different course plattforms that
-want to ease the course development, such as Ilias, edX, Moodle, XXX noch mehr ....
-And how is that kind of simplicity achieved, mostly by offering an integrated
-editor that enable the user to write develop a course with a lot of buttons and
-menues, sub-sub-menues and masks whos only intention is to hide non intuitive
-syntax and semantics of programming languages that are interpreted machine in
-order to display such a course ...
+TODO: noch mehr ....
 
-but this approach lacks in exchangeability, of course, system like ILIAS support SCORM (Sharable Content Object Reference Model), but who needs this standard if most of the other systems do not apply it.
+And how is such a kind of "simplicity" achieved? Mostly, by offering an
+integrated config-system and editors, that shall enable the user to create a
+course with a lot of buttons and menues, sub-sub-menues, and masks, whos only
+purpose is to hide the non-intuitive syntax and semantics of a language
+that can be easily interpreted machines, not by humans.
+
+> We should instead start to create languages that can be easy understood and
+> applied by humans, in order to describe their intentions, and let the
+> machine rack its cpu in order to find an appropriate translation.
+
+More or less, all of the mentioned systems have drawbacks in some of the
+following points:
 
 **Requirements from an OpenSource perspective**
 
-* versionierung different ressources of truth
-* unterstützung von etwickler teams
-* übersetzung
-* darstellung in verschiedenen formaten
-* integration verschiedener webtechnologien für visualiserung, etc.
+1. No support for larger course developer-teams, including those who develop
+   additional functionality and those who provide content
+2. No versioning, in contrast to Wikipedia as a single source of truth, content
+   shall be provided in different "styles" for a heterogenous groups of students
+3. No reusability, parts of one course cannot simply be applied of coppied into
+   another project
+4. No support for internationalization/localization (i18n), thus a course cannot
+   simply be translated into another language
+5. No variance in representation
+6. Difficulties in adopting and integrating new web technologies
 
 
-
-
-Ilias edx und co … bieten zwar Masken zur Kurserstellung aber diese sind eher hinderlich und verlangen bei vielen sachen trotzdem dass man html benötigt, sonst ist man eingeschränkt
-
-für viele Menschen scheint der Aufwand schwer ein online-kurs zu gestalten schwierigkeiten …
-
-
-
-
-Frei? Wenn sich jemand die Mühe gemacht hat, dann kann der Kurs auch einfach heruntergeladen werden??? Eher nicht …
-
-Standards SCORM
-
-authoring tools?
-
-Was ist besser als ein Text-Editor???
-
-besser als code in sprachen zu entwickeln, die von computern verstanden werden
-ist es sprachen zu entwickeln, die intentionales coding ermöglichern... der computer muss versuchen herauszufinden, was der mensch im sinne hat ...
 
 ## 2. How Does It Work
 
