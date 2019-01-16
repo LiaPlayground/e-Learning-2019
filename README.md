@@ -213,16 +213,14 @@ This whole paragraph will be colored in red ;-)<!--
 after 3 seconds.
 
 
-
-
 #### 2.2.2 Quizzes and Surveys
 
                               --{{0}}--
-One of the language feature we wanted at most, was the the possibility to
-integrate quizzes in different flavors. Quizzes are always associate with double
-brackets, such that to add a text quiz, you only have to enter the solution in
-double braces and the input fild, check and show solution buttons are
-automatically generated.
+One of the language feature we wanted at most, was an easy way to integrate
+quizzes in different flavors and thus, to give students the possiblity to check
+their knowledge. Quizzes are always associate with double brackets, such that to
+add a text quiz, you only have to enter the solution in double braces and the
+input fild, check and show solution buttons are automatically generated.
 
 
                                {{0-1}}
@@ -241,7 +239,7 @@ What did the **fish** say when he hit a **concrete wall**?
 *******************************************************************************
 
                               --{{1}}--
-How would you encode a multiple-choice quiz with a typewriter, probably similarly as we did it. You can add as much rows/options,
+How would you encode a multiple-choice quiz with a typewriter, probably similarly as we did it, which looks like a list of simple check buttons that alreay shows the correct solution. You can add as much rows/options.
 
 
 
@@ -249,7 +247,7 @@ How would you encode a multiple-choice quiz with a typewriter, probably similarl
                               {{1-2}}
 *******************************************************************************
 
-``` markdown TextQuiz
+``` markdown Multiple-Choice-Quiz
 Just add as many points as you wish:
 
     [[X]] Only the **X** marks the correct point.
@@ -264,6 +262,69 @@ Just add as many points as you wish:
     [[X]] ...
 
 *******************************************************************************
+
+           --{{2}}--
+Knowing how check buttons can be defined by using brackets, it seems obvious to
+define radio buttons and thus single choice quizzes with the following syntax.
+
+{{2-3}}
+*******************************************************************************
+
+``` markdown Single-Choice-Quizzes
+Click the center!
+
+    [( )] This is wrong.
+    [(X)] <-- The only correct option.
+    [( )] Also not right.
+```
+
+Click the center!
+
+    [( )] This is wrong.
+    [(X)] <-- The only correct option.
+    [( )] Also not right.
+
+*******************************************************************************
+
+
+
+{{3-4}}
+*******************************************************************************
+
+``` markdown Single-Choice-Quizzes
+What did the **fish** say when he hit a **concrete wall**?
+
+    [[dam]]
+    [[?]] This is actually a joke.
+    [[?]] Fishes cannot realy speak.
+    <script>
+
+    </script>
+********************************************
+
+todo
+
+********************************************
+```
+
+What did the **fish** say when he hit a **concrete wall**?
+
+    [[dam]]
+    [[?]] This is actually a joke.
+    [[?]] Fishes cannot realy speak.
+    <script>
+
+    </script>
+********************************************
+
+todo
+
+********************************************
+
+*******************************************************************************
+
+
+
 
 
 #### 2.2.2 Diagrams and ASCII-Art
