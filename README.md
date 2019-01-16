@@ -68,7 +68,11 @@ that can be easily interpreted machines, not by humans.
 > applied by humans, in order to describe their intentions, and let the
 > machine rack its cpu in order to find an appropriate translation.
 
-More or less, all of the mentioned systems have drawbacks in some of the
+[^1]: TODO: elab
+
+## 2. Adapting OpenSource Development
+
+More or less, all of the aforementioned systems have drawbacks in some of the
 following points:
 
 **Requirements from an OpenSource perspective**
@@ -84,19 +88,153 @@ following points:
 5. No variance in representation
 6. Difficulties in adopting and integrating new web technologies
 
+Pin-points 1 and 2 can be easily solved by applying version control systems such
+as git[^2], svn[^3], mercury[^4], etc. and their web-based hosting services such
+as GitHub[^5], GitLab[^6], SourceForge[^7], etc. to name only a few. All
+required ressources, including images, videos, datasheets, javascript and
+css-styles, and everything else can be easily uploaded and made available via
+the internet.
 
+[^2]: Todo: git
+[^3]: Todo: svn
+[^4]: Todo: mercury
+[^5]: Todo: github
+[^6]: Todo: gitlab
+[^7]: Todo: SourceForge
 
-## 2. How Does It Work
+### 2.1 LiaScript: Basics
 
+To describe educational content, Markdown can be applied, a lightwheigth
+markup language that is widely applied in OpenSource-projects for documentation.
+Of course, we are not the first ones that apply Markdown to ship educational
+contents, earlier examples are:
 
+* [gitbook](TODO):
+* [common-mark](TODO):
+* [elearnjs](TODO):
+* [ascii-doc](TODO):
+* others:
 
-### 2.1 Basic Syntax
+TODO: github flavored markdown ...
 
 ### 2.2 Extensions to Markdown
 
-#### 2.2.1 Quizzes and Surveys
+an other representation style ... watch youtube like screen cast with interactive elements backed in
+
+one benefit of using markdonw ... still readable ...
+
+#### 2.2.1 Multimedia Content & ASCII-Art
+
+                            --{{0}}--
+References in Markdown are encoded with a simple bracket-parenthesis notation
+and a starting exlamation-mark defines it as an image.
 
 
+``` markdown
+[i am an link](link url)
+
+![I am an image](image-url "info")
+```
+
+                           --{{1}}--
+In contrast to this, it is still complicated to include multimedia content.
+Based on the previous notation, it is possible in LiaScript to mark a link as an
+audio-file by adding a starting question-mark, which can be interpreted with a
+little bit of imagination as an ear. Adding an additional excalmation-mark can
+be interpreted as visual plus audio and thus marks the appearance of a movie.
+The benefit of this notation is, that it is still compatible with Markdown, and
+at every other Markdown-viewer you will still have a working link to click on.
+
+``` markdown
+?[i am an link](link url)
+
+!?[I am an image](image-url "info")<!--width="800px"-->
+```
+
+From our experience, we know that a lot of produced images represent
+
+
+``` HTML
+    <!--style="max-width: 400px"-->
+                            Multiline-Diagram
+    1.9 |    DotS
+        |                 ***
+      y |               *     *
+      - | r r r r r r r*r r r r*r r r r r r r
+      a |             *         *
+      x |            *           *
+      i | B B B B B * B B B B B B * B B B B B
+      s |         *                 *
+        | *  * *                       * *  *
+        +------------------------------------
+        0              x-axis               1
+```
+
+        <!--style="max-width: 400px"-->
+                            Multiline-Diagram
+    1.9 |    DotS
+        |                 ***
+      y |               *     *
+      - | r r r r r r r*r r r r*r r r r r r r
+      a |             *         *
+      x |            *           *
+      i | B B B B B * B B B B B B * B B B B B
+      s |         *                 *
+        | *  * *                       * *  *
+        +------------------------------------
+        0              x-axis               1
+
+
+
+#### 2.2.2 Quizzes and Surveys
+
+                              --{{0}}--
+One of the language feature we wanted at most, was the the possibility to
+integrate quizzes in different flavors. Quizzes are always associate with double
+brackets, such that to add a text quiz, you only have to enter the solution in
+double braces and the input fild, check and show solution buttons are
+automatically generated.
+
+
+                               {{0-1}}
+*******************************************************************************
+
+``` markdown TextQuiz
+What did the **fish** say when he hit a **concrete wall**?
+
+      [[dam]]
+```
+
+What did the **fish** say when he hit a **concrete wall**?
+
+      [[dam]]
+
+*******************************************************************************
+
+                              --{{1}}--
+How would you encode a multiple-choice quiz with a typewriter, probably similarly as we did it. You can add as much rows/options,
+
+
+
+
+                              {{1-2}}
+*******************************************************************************
+
+``` markdown TextQuiz
+Just add as many points as you wish:
+
+    [[X]] Only the **X** marks the correct point.
+    [[ ]] Empty ones are wrong.
+    [[X]] ...
+```
+
+Just add as many points as you wish:
+
+    [[X]] Only the **X** marks the correct point.
+    [[ ]] Empty ones are wrong.
+    [[X]] ...
+
+*******************************************************************************
 
 
 #### 2.2.2 Diagrams and ASCII-Art
