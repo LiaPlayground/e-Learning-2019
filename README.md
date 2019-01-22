@@ -238,10 +238,73 @@ What did the **fish** say when he hit a **concrete wall**?
 
 *******************************************************************************
 
+--{{1}}--
+Some might adapt the question to handle the disambiguity in this question. But
+LiaScript also offeres different methods to tweak a quiz in various ways. It is
+either possible to add as manny hints, by adding question-marks in double
+brackets and let the user decide if he needs help, by clicking on the associated
+button in the rendered course. The additional `script`-tag allows to check the
+input and trim the input or transform the input to lower-case and to compare it
+with different allowed solution. Therefor the `@input`-macro gets replaced by
+the current user input. The final Markdown-blocks surrounded by two lines of
+stars define an more detailed explanaition, which appears if either the user
+input was correct or if the user clicked onto the resolve button.
+
+
+                                {{1-2}}
+*******************************************************************************
+
+``` markdown TextQuiz
+What did the **fish** say when he hit a **concrete wall**?
+
+[[dam]]
+[[?]]   Do not thake this question serious.
+[[?]]   It is actually a joke in lower-case.
+<script>
+  let input = "@input".trim().toLowerCase();
+  input == "damn" || input == "dam";
+</script>
+******************************************************
+
+A __dam__ is a barrier obstructing flowing water.
+
+__Damn__ usually refers to damnation, a condemnation,
+usually by a god; frequently used as a profanity.
+
+******************************************************
+```
+
+What did the **fish** say when he hit a **concrete wall**?
+
+    [[dam]]
+    [[?]]   Do not thake this question serious.
+    [[?]]   It is actually a joke in lower-case.
+    <script>
+      let input = "@input".trim().toLowerCase();
+      input == "damn" || input == "dam";
+    </script>
+    ******************************************************
+
+    A __dam__ is a barrier obstructing flowing water.
+
+    __Damn__ usually refers to damnation, a condemnation,
+    usually by a god; frequently used as a profanity.
+
+    ******************************************************
+
+*******************************************************************************
+
+
+
+
+
+
+
+
                               --{{1}}--
-How would you encode a multiple-choice quiz with a typewriter, probably similarly as we did it, which looks like a list of simple check buttons that alreay shows the correct solution. You can add as much rows/options.
-
-
+How would you encode a multiple-choice quiz with a typewriter, probably
+similarly as we did it, which looks like a list of simple check buttons that
+alreay shows the correct solution. You can add as much rows/options.
 
 
                               {{1-2}}
