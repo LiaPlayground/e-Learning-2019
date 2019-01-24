@@ -158,7 +158,8 @@ to translate labels. Well, in LiaScript you can simply create such diagrams by
 using your text editor, such ASCII-art patterns are automatically detected and
 translated into a nicely rendered diagram. Different charaters represent
 different colors and upper and lower-case different sizes. So that you can still
-refer in your text to the red line. For more elaborate examples of ASCII-art, see also the documentation at: Todo
+refer in your text to the red line. For more elaborate examples of ASCII-art,
+see also the documentation at: Todo
 
 
 ``` HTML
@@ -193,7 +194,11 @@ refer in your text to the red line. For more elaborate examples of ASCII-art, se
 
 
 
-As you have problably noticed, the code examples contain aditional comments with attributes that are used to style the associated elements, a comment at the beginning of a block (i.e., table, list, paragraph) is used to style the entire block, if it is attached to the end, it can be used to style single elements, such as words or phrases.
+As you have problably noticed, the code examples contain aditional comments with
+attributes that are used to style the associated elements, a comment at the
+beginning of a block (i.e., table, list, paragraph) is used to style the entire
+block, if it is attached to the end, it can be used to style single elements,
+such as words or phrases.
 
 
 ``` markdown
@@ -239,16 +244,16 @@ What did the **fish** say when he hit a **concrete wall**?
 *******************************************************************************
 
 --{{1}}--
-Some might adapt the question to handle the disambiguity in this question. But
-LiaScript also offeres different methods to tweak a quiz in various ways. It is
-either possible to add as manny hints, by adding question-marks in double
-brackets and let the user decide if he needs help, by clicking on the associated
-button in the rendered course. The additional `script`-tag allows to check the
-input and trim the input or transform the input to lower-case and to compare it
-with different allowed solution. Therefor the `@input`-macro gets replaced by
-the current user input. The final Markdown-blocks surrounded by two lines of
-stars define an more detailed explanaition, which appears if either the user
-input was correct or if the user clicked onto the resolve button.
+Some might adapt the question to handle the disambiguity in this case. But
+LiaScript also offeres methods to tweak a quiz in different ways. It is either
+possible to add hints, by adding question-marks in double brackets and let the
+user decide if he needs help, by clicking on the associated button in the
+rendered course. The optional `script`-tag allows to check the input, in this
+case to trim it and to transform it lower-case and finally to compare it with
+different allowed solution. Therefor the `@input`-macro gets replaced by the
+current user input. The trailing Markdown-blocks surrounded by two lines of
+stars show a more detailed explanaition, which appears either if the user input
+was correct or if the user clicked onto the resolve button.
 
 
                                 {{1-2}}
@@ -260,6 +265,7 @@ What did the **fish** say when he hit a **concrete wall**?
 [[dam]]
 [[?]]   Do not thake this question serious.
 [[?]]   It is actually a joke in lower-case.
+[[?]]   Fishes cannot realy speak.
 <script>
   let input = "@input".trim().toLowerCase();
   input == "damn" || input == "dam";
@@ -279,6 +285,7 @@ What did the **fish** say when he hit a **concrete wall**?
     [[dam]]
     [[?]]   Do not thake this question serious.
     [[?]]   It is actually a joke in lower-case.
+    [[?]]   Fishes cannot realy speak.
     <script>
       let input = "@input".trim().toLowerCase();
       input == "damn" || input == "dam";
@@ -301,13 +308,14 @@ What did the **fish** say when he hit a **concrete wall**?
 
 
 
-                              --{{1}}--
+                              --{{2}}--
 How would you encode a multiple-choice quiz with a typewriter, probably
-similarly as we did it, which looks like a list of simple check buttons that
-alreay shows the correct solution. You can add as much rows/options.
+similarly as we did it. It looks like a list of simple check-buttons that
+define the solution. You can add as much rows/options and of course add also
+hints, scripts, or an explanation...
 
 
-                              {{1-2}}
+                              {{2-3}}
 *******************************************************************************
 
 ``` markdown Multiple-Choice-Quiz
@@ -326,11 +334,11 @@ Just add as many points as you wish:
 
 *******************************************************************************
 
-           --{{2}}--
+           --{{3}}--
 Knowing how check buttons can be defined by using brackets, it seems obvious to
-define radio buttons and thus single choice quizzes with the following syntax.
+define radio buttons and thus single choice quizzes with the following syntax:
 
-{{2-3}}
+                             {{3}}
 *******************************************************************************
 
 ``` markdown Single-Choice-Quizzes
@@ -348,89 +356,12 @@ Click the center!
     [( )] Also not right.
 
 *******************************************************************************
-
-
-
-{{3-4}}
-*******************************************************************************
-
-``` markdown Single-Choice-Quizzes
-What did the **fish** say when he hit a **concrete wall**?
-
-    [[dam]]
-    [[?]] This is actually a joke.
-    [[?]] Fishes cannot realy speak.
-    <script>
-
-    </script>
-********************************************
-
-todo
-
-********************************************
-```
-
-What did the **fish** say when he hit a **concrete wall**?
-
-    [[dam]]
-    [[?]] This is actually a joke.
-    [[?]] Fishes cannot realy speak.
-    <script>
-
-    </script>
-********************************************
-
-todo
-
-********************************************
-
-*******************************************************************************
-
-
-
-
-
-#### 2.2.2 Diagrams and ASCII-Art
-
-Use ASCII-Art to draw diagrams:
-
-                            Multiline-Diagram
-    1.9 |    DOTS
-        |                 ***
-      y |               *     *
-      - | r r r r r r r*r r r r*r r r r r r r
-      a |             *         *
-      x |            *           *
-      i | B B B B B * B B B B B B * B B B B B
-      s |         *                 *
-        | *  * *                       * *  *
-        +------------------------------------
-        0              x-axis               1
 
 
 #### 2.2.3 Fragments & Text2Speech
 
 ### 2.3 Embracing the Internet
 
-What did the **fish** say when he hit a **concrete wall**?
-
-    [[dam]]
-
-### Multiple Choice
-
-Just add as many points as you wish:
-
-    [[X]] Only the **X** marks the correct point.
-    [[ ]] Empty ones are wrong.
-    [[X]] ...
-
-### Single Choice
-
-Just add as many points as you wish:
-
-    [( )] ...
-    [(X)] <-- Only the **X** is allowed.
-    [( )] ...
 
 ## Executable Code
 
@@ -453,37 +384,3 @@ new Chartist.Bar('#chart2', {
 
 <div class="ct-chart ct-golden-section" id="chart1"></div>
 <div class="ct-chart ct-golden-section" id="chart2"></div>
-
-
-### Projects
-
-You can make your code executable and define projects:
-
-``` js     -EvalScript.js
-let who = data.first_name + " " + data.last_name;
-
-if(data.online) {
-  who + " is online"; }
-else {
-  who + " is NOT online"; }
-```
-``` json    +Data.json
-{
-  "first_name" :  "Sammy",
-  "last_name"  :  "Shark",
-  "online"     :  true
-}
-```
-<script>
-  // insert the JSON dataset into the local variable data
-  let data = @input(1);
-
-  // eval the script that uses this dataset
-  eval(`@input(0)`);
-</script>
-
-## More
-
-Find out what you can even do more with quizzes:
-
-https://liascript.github.io/course/?https://raw.githubusercontent.com/liaScript/docs/master/README.md
