@@ -549,9 +549,9 @@ Some might adapt the question to handle the ambiguity in this case. But let us
 try out what LiaScript has to offer. It is either possible to add hints, by
 adding question-marks in double brackets and let the user decide if he needs
 help, by clicking on the associated button in the rendered course. The optional
-'script'-tag allows to check the input, in this case to trim it and to transform
+`script`-tag allows to check the input, in this case to trim it and to transform
 it lower-case and finally to compare it with different allowed solution.
-Therefor the '@input'-macro gets replaced by the current user input. The
+Therefor the `@input`-macro gets replaced by the current user input. The
 trailing Markdown-blocks surrounded by two lines of stars show a more detailed
 explanation, which appears either if the user input was correct or if the user
 clicked onto the resolve button.
@@ -724,15 +724,15 @@ to the explanatory text as in a presentation or to read it like a book.
 ##### 2.2.5.1 Fragmentation
 
                                --{{0}}--
-Defining fragments an revealing them step by step is quite simple, only a number
-has in double braces has to put in front of a Markdown-block. Fragments with
-only one number will sustain until the end of a slide. A point of disappearance
-can be defined by putting a minus and a second number into double braces. Inline
-fragments can be defined by putting the fragement number and the elements to
-apper into successive braces. And it is also possible to attach different blocks
-to the same fragement number, either by attaching a number to every block or by
-putting them into a body of stars, as it was done with the solution in section
-[quizzes](#9).
+Defining fragments and revealing them step by step is quite simple, only a
+number has in double braces has to put in front of a Markdown-block. Fragments
+with only one number will sustain until the end of a slide. A point of
+disappearance can be defined by putting a minus and a second number into double
+braces. Inline fragments can be defined by putting the fragment number and the
+elements to appear into successive braces. And it is also possible to attach
+different blocks to the same fragment number, either by attaching a number to
+every block or by putting them into a body of stars, as it was done with the
+solution in section [quizzes](#9).
 
 ``` markdown
                   {{1}}
@@ -811,10 +811,9 @@ I should speak with a UK like accent.
 In the previous sections we had presented syntactic extensions to Markdown. But
 the Internet is full libraries and possibilities that a might be necessary for a
 particular course or topic. In contrast to many other Markdown-interpreters
-LiaScript allows to integrate JavaScript, HTML, and CSS directly wthin the
-document. Additionally, it has support for a Macro-notation that allows to
-automate and thus simplify repetitive and tedious tasks.
-
+LiaScript allows integrating JavaScript, HTML, and CSS directly within the
+document. Additionally, it has support for a Macro-notation that allows
+automating and thus simplify repetitive and tedious tasks.
 
 ![www](https://media.giphy.com/media/RxR1KghIie2iI/giphy.gif)<!-- width="100%"-->
 
@@ -823,9 +822,9 @@ automate and thus simplify repetitive and tedious tasks.
                                --{{0}}--
 It is possible use HTML everywhere and if you want to make use of a certain
 JavaScript library or CSS-file, their URLs have to be included in the main
-comment-tag at first. Using the keyword `script` follwed by a colon and a URL or
-multiple URLs, JavaScript can be integrated and similarly by using the keyword
-`link` style-sheets can be loaded.
+comment-tag at first. Using the keyword `script` followed by a colon and a URL
+or multiple URLs, JavaScript can be integrated and similarly by using the
+keyword `link` style-sheets can be loaded.
 
 ``` html
 <!--
@@ -838,7 +837,7 @@ link:   https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css
 
                                --{{1}}--
 Afterwards it is possible everywhere to access the new functionality. The
-follwing example depicts, how the JavaScript library
+following example depicts, how the JavaScript library
 [Chartist](https://gionkunz.github.io/chartist-js/) is used to plot a certain
 graph.
 
@@ -856,7 +855,7 @@ graph.
 ```
 
                                --{{2}}--
-See the resulting graph, rendered by Chartist ...
+And this is the resulting graph rendered by Chartist ...
 
                                  {{2}}
 <div class="ct-chart ct-golden-section" id="chart"></div>
@@ -869,6 +868,7 @@ See the resulting graph, rendered by Chartist ...
 </script>
 
 #### 2.3.2 ... with Macros
+
 
 
                                --{{0}}--
