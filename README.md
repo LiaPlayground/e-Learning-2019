@@ -870,15 +870,13 @@ And this is the resulting graph rendered by Chartist ...
 #### 2.3.2 ... with Macros
 
 
-
                                --{{0}}--
-Im Abschnitt [Quizze](#6) wurde bereits das `@input`-Macro genutzt um die
-Stellen zu markieren, die durch die Nutzereingaben ersetzt werden sollen. Ein
-Macro beginnt immer mit einem `@`-Symbol und kann im  "Haupt"-Kommentar eines
-Dokumentes definiert werden. Macros beschreiben einfache Regeln für die
-Textersetzung. Für das einzeilige `@red` Macro gilt, alles was nach dem
-Doppelpunkt folgt definiert den Ersetzungstext. Parameterersetzungen werden
-jeweils durch ein `@`-Symbol gefolgt mit einer Nummer definiert.
+In section [2.2.4 Quizzes](#9), the `@input` macro has already been used to mark
+the replacement for the user input. A macro always starts with an `@` symbol and
+can be defined in the "main" comment of a document. Macros describe simple rules
+for text replacement. For the one-line `@red` macro, everything following the
+colon defines the replacement text. Parameter substitutions are defined by a `@`
+symbol followed by a number.
 
 
                                 {{0-2}}
@@ -891,8 +889,8 @@ jeweils durch ein `@`-Symbol gefolgt mit einer Nummer definiert.
 ```
 
                                --{{1}}--
-Diese Erweiterungen können dann beliebig im Dokument eingesetzt werden, wie im
-folgenden Beispiel dargestellt.
+These extensions can then be used arbitrarily in the document, as shown in the
+following example.
 
                                 {{1-2}}
 *******************************************************************************
@@ -910,12 +908,10 @@ folgenden Beispiel dargestellt.
 *******************************************************************************
 
                                --{{2}}--
-Ein Macro kann auch andere Macros aufrufen und komplexere Macros können wie im
-Beispiel gezeigt, auch als Block definiert werden, welches aus beliebigen HTML,
-Markdown, und JavaScript-Elementen besteht. In diesem Fall sollte die Nutzung
-von Chartist vereinfacht werden, indem einmal die ID für das `div`-Element
-verändert wird aber auch der zu zeichnende Inhalt als zweiter Parameter
-übergeben wird.
+A macro can also call other macros, and more complex macros can be defined as a
+block consisting of multiple HTML, Markdown, or JavaScript elements. In this
+example the use of Chartist should be simplified by changing the ID for the
+`div` element and the content to be drawn is passed as the second parameter.
 
                                  {{2}}
 ``` html
@@ -925,7 +921,7 @@ verändert wird aber auch der zu zeichnende Inhalt als zweiter Parameter
 <div class="ct-chart ct-golden-section" id="chart@0">
 </div>
 <script>
-let chart = new Chartist.Line('#chart@0', {@1});
+  let chart = new Chartist.Line('#chart@0', {@1});
 </script>
 
 @end
@@ -934,12 +930,10 @@ let chart = new Chartist.Line('#chart@0', {@1});
 ```
 
                                --{{3}}--
-Auch dieses Macro kann über die bekannte "funktionsähnliche" Notation aufgerufen
-werden. Da Kommas als Separatoren für die Parameter genutzt werden, müssen hier
-sogenannte back-ticks verwendet werden, um den zweiten Parameter als ganzen
-String zu übergeben. Zugegebenermaßen kann dies für sehr lange Eingaben auch
-sehr schnell unleserlich werden.
-
+This macro can also be called via a "function-like" notation. Since commas are
+used as separators for the parameters, back-ticks must be used here to pass the
+second parameter as an entire string. Admittedly, for very long entries, this
+can quickly become unreadable.
 
                                 {{3-4}}
 *******************************************************************************
@@ -955,12 +949,12 @@ sehr schnell unleserlich werden.
 *******************************************************************************
 
                                --{{4}}--
-Aus diesem Grund können Macros auch über einen Code-Block aufgerufen werden,
-dazu muss nur im Kopf des Blockes das jeweilige Macro aufgerufen werden. Der
-Körper des Blocks wird dann insgesamt als letzter Parameter an die Textersetzung
-übergeben. Neben der übersichtlicheren Schreibweise werden von allen gängigen
-Markdown-Viewern diese Elemente zumindest als Code-Block mit Syntax-Highlighting
-richtig dargestellt und erlaubt zumindest die Interpretation der Parameter.
+For this reason, macros can also be called within a code-block, therefor only
+the respective macro must be called in the head of the block. The body of the
+block is then passed as a single parameter. This makes it easier to define
+complex macros and additionally, all popular Markdown-viewers should at least
+display this kind of inputs in a nicely rendered code-block with syntax
+highlighting, which enables the interpretation of data.
 
 
                                  {{4}}
@@ -970,8 +964,8 @@ richtig dargestellt und erlaubt zumindest die Interpretation der Parameter.
 ` ` `json @Chartist(id2)
 labels: [1, 2, 3, 4, 5, 6, 7],
 series: [
-[100, 120, 180, 200, 0, 12, -1],
-[10, 20, 30, 40, 50, 90, -100]]
+  [100, 120, 180, 200, 0, 12, -1],
+  [10, 20, 30, 40, 50, 90, -100]]
 ` ` `
 ```
 
@@ -980,114 +974,114 @@ series: [
 ```json @Chartist(id2)
 labels: [1, 2, 3, 4, 5, 6, 7],
 series: [
-[100, 120, 180, 200, 0, 12, -1],
-[10, 20, 30, 40, 50, 90, -100]]
+  [100, 120, 180, 200, 0, 12, -1],
+  [10, 20, 30, 40, 50, 90, -100]]
 ```
 
 *******************************************************************************
 
 
-
-
 ### 2.4 Executable Code
 
---{{0}}--
-Durch die folgende Syntax können mehrere standard Markdown Code-Blöcke zu einem
-Projekt zusammengefasst werden. Die unterschiedlichen Dateien können mit einem
-Namen versehen werden und lassen sich auf und zu klappen. Das zusätzliche
-`script`-tag am Ende weist diese Blöcke als ausführbaren Code aus und definiert
-wie mit den Inhalten der einzelnen Blöcke zu verfahren ist.
+                               --{{0}}--
+The following syntax can be used to combine several Markdown code-blocks into
+one project. To the different files titles can be associated, and they can be
+opened and closed. The additional `script` tag at the end identifies these
+blocks as executable code and defines how to handle the contents of each block.
+In this case the `@input` macro is called with a parameter, which defines which
+code-block gets substituted at this position.
 
- {{0-1}}
+
+                                {{0-1}}
 ``` markdown
 ` ` ` js     -EvalScript.js
 let who = data.first_name + " " + data.last_name;
 
 if(data.online) {
-who + " is online"; }
+  who + " is online"; }
 else {
-who + " is NOT online"; }
+  who + " is NOT online"; }
 ` ` `
 ` ` ` json    +Data.json
 {
-"first_name" :  "Sammy",
-"last_name"  :  "Shark",
-"online"     :  true
+  "first_name" :  "Sammy",
+  "last_name"  :  "Shark",
+  "online"     :  true
 }
 ` ` `
 <script>
-// insert the JSON dataset into the local variable data
-let data = @input(1);
+  // insert the JSON dataset into the local variable data
+  let data = @input(1);
 
-// eval the script that uses this dataset
-eval(`@input(0)`);
+  // eval the script that uses this dataset
+  eval(`@input(0)`);
 </script>
 ```
 
---{{1}}--
-Die LiaScript-Interpretation dieser Blöcke sieht dann wie folgt aus. Alle
-Dateien sind editierbar und es wird, um Änderungen zu verfolgen, auch ein
-eigenes lineares Versions-Management-System genutzt. Probieren Sie es aus,
-verändern Sie den Code und kehren zu früheren Versionen zurück.
+                               --{{1}}--
+The LiaScript interpretation of these blocks then looks like this. All files are
+editable and a linear version management system is used to track changes. Try
+it, change the code and go back to earlier versions.
 
- {{1-2}}
+
+                                {{1-2}}
 ``` js     -EvalScript.js
 let who = data.first_name + " " + data.last_name;
 
 if(data.online) {
-who + " is online"; }
+  who + " is online"; }
 else {
-who + " is NOT online"; }
+  who + " is NOT online"; }
 ```
 ``` json    +Data.json
 {
-"first_name" :  "Sammy",
-"last_name"  :  "Shark",
-"online"     :  true
+  "first_name" :  "Sammy",
+  "last_name"  :  "Shark",
+  "online"     :  true
 }
 ```
 <script>
-// insert the JSON dataset into the local variable data
-let data = @input(1);
+  // insert the JSON dataset into the local variable data
+  let data = @input(1);
 
-// eval the script that uses this dataset
-eval(`@input(0)`);
+  // eval the script that uses this dataset
+  eval(`@input(0)`);
 </script>
 
 
---{{2}}--
-Da es, wie in Abschnitt [Eigene Erweiterungen](#10) gezeigt, auch möglich ist
-verschiedene JavaScript-Funktionalität und Bibliotheken einzubinden, können auch
-unterschiedliche Programmiersprachen unterstützt werden. Das Beispiel zeigt ein
-einfaches _C_-Programm, dass mithilfe der
-[rextester-API](https://rextester.com/main) kompiliert und ausgeführt werden
-kann. Die etwas komplexere Definition im benötigten `script`-tag wurde hier
-mithilfe des Macros `@Rextester.eval` zur Verfügung gestellt. Auf diese Weise
-können beliebige ausführbare Code-Fragmente in einem Dokument definiert werden.
+                               --{{2}}--
+As shown in section [2.3 Extending LiaScript](#13), it is also possible to
+integrate different JavaScript functionalities and libraries, so that also
+different programming languages can be supported. The example below shows a
+simple _C_ program that can be compiled and executed using the
+[rextester API](https://rextester.com/main). The more complex definition of the
+associated `script`-tag was provided using the `@Rextester.eval` macro. Only by
+attaching such a macro, any code block can be turned into an executable one.
 
 
- {{2-3}}
+                                {{2-3}}
 ``` c source_file.c
 #include <stdio.h>
 int main()
 {
-int i; // Löschen Sie das Semikolon und
-// schauen was passiert ...
+  int i; // Try to delete the semicolon
+         // to see what happens next...
 
-for(i=0; i<10; ++i) {
-printf("Hello, World! #% d\n", i);
-}
-return 0;
+  for(i=0; i<10; ++i) {
+    printf("Hello, World! #% d\n", i);
+  }
+  return 0;
 }
 ```
 @Rextester.eval
 
 
---{{3}}--
-Auch die Kombination mit anderen Sprachen und Visualisierungen ist möglich, wie
-hier zum Beispiel mit [_Processing_](https://de.wikipedia.org/wiki/Processing):
+                               --{{3}}--
+The combination with other languages and visualizations (using HTML and
+JavaScript) is also possible, see the interactive example for the programming
+language [_Processing_](https://de.wikipedia.org/wiki/Processing):
 
-  {{3}}
+                                 {{3}}
 ``` cpp ABSTRACT01js
 int num,cnt,px,py,fadeInterval;
 Particle[] particles;
@@ -1428,8 +1422,11 @@ class Vec2D {
 @processing(ABSTRACT01js)
 
 
-  --{{4}}--
-Für solche JavaScript-Bibliotheken und auch zur Nutzung anderer Funktionalitäten
-bieten wir Templates an, die über ein eigenes Macro-System implementiert wurden.
-Diese können frei übernommen werden und minimieren auch den Bruch beim lesen des
-originalen Markdown-Dokumentes.
+                                --{{4}}--
+For such JavaScript libraries and also for the use of other functionalities, we
+offer templates that have been implemented via our macro system[^todo]. These
+can be used freely and furthermore it also minimizes the breaks when reading the
+original Markdown document.
+
+[^todo]: List of LiaScript templates:
+         https://liascript.github.io/course/?https://raw.githubusercontent.com/liaScript/templates/master/README.md#1
