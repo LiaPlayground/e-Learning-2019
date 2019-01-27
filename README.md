@@ -161,18 +161,19 @@ link: https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css
 # Liascript: A Domain-Specific-Language for Interactive Online Courses
 
 LiaScript is an attempt to enable everyone to create free and interactive online
-courses, without the need of being an experienced programmer. Instead it aims to
-bring both parties, software- and course-developers, closer together by
+courses, without the need of being an experienced programmer. Instead, it aims
+to bring both parties, software- and course-developers, closer together by
 introducing Open-Source techniques into the Open-courSe development process.
 LiaScript was designed to be compatible to Common-Markdown, but it introduces
-lots of language extensions that deal with quizzes, suveys, ASCII-art,
+lots of language extensions that deal with quizzes, surveys, ASCII-art,
 text2speech, animations, online programming, the integration of JavaScript, etc.
-as well as its own Macro-System that simplifies tedious and repetitive tasks. It
+as well as its own macro-system that simplifies tedious and repetitive tasks. It
 comes along with its own Just-In-Time compiler that runs in the Browser and
 therefor does not require additional tooling.
 
 ## 1. Introduction
 
+                             --{{0}}--
 LiaScript was initially developed within the _"Industrial eLab-Project [^1]"_,
 which aims to make university hardware and laboratories accessible via the
 Internet. But, we soon realized that only by giving remote access to these
@@ -184,36 +185,46 @@ problem was to develop an extendable and adaptable system for creating courses
 different backgrounds, which only interface with our hardware other
 external resources.
 
-TODO: eLab image ...
+                              {{0-1}}
+![robot](pics/robot.jpg)<!-- width="100%" -->
 
+                             --{{1}}--
 Surely, creating an online-course from scratch requires a lot of expertise in
 different web technologies at front-end (e.g., HTML, JavaScript, CSS, testing),
 back-end (e.g., webservers, databases), and different communication standards to
 connect both sides (e.g., CRUD, WebSockets, AJAX). Hence, it is nearly
 impossible for a non-programmer to understand all of these issues, before
-starting to develop his or her own online course. Screen- or pod-casts are not a
-real alternative, since they are expensive and time-consuming in production, not
-easy to change or translate, and require additional skills in movie cutting.
-That is why platforms such as Udacity or Coursea invest a lot of effort and
-money in high-quality course productions, which is comparable to movie
-productions, including screenplays, actors, different sets and locations.
+starting to develop his or her own online course.
 
-Fortunately, there are also course platforms that try to ease the course
-development for non-experts, such as Ilias, edX, Moodle,
+                              {{1-2}}
+![eLab](pics/eLab.jpg)<!-- width="100%" -->
 
-TODO: noch mehr ....
 
-And how is such a kind of "simplicity" achieved? Mostly, by offering an
-integrated configuration-system and editors, that shall enable the user to
+                             --{{2}}--
+Screen- or pod-casts are not a real alternative, since they are expensive and
+time-consuming in production, not easy to change or translate, and require
+additional skills in movie cutting. That is why platforms such as Udacity or
+Coursea invest a lot of effort and money in high-quality course productions,
+which is comparable to movie productions, including screenplays, actors,
+different sets and locations. Fortunately, there are also course platforms that
+try to ease the course development for non-experts, such as Ilias, edX, Moodle,
+amongst others.
+
+
+                             --{{3}}--
+But how is such a kind of "simplicity" achieved? Mostly, by offering
+integrated configuration-systems and editors, that shall enable the user to
 create a course with a lot of buttons and menus, sub-sub-menus, and masks, whose
 only purpose is to hide the non-intuitive syntax and semantics of a language
 that can be easily interpreted machines, not by humans.
 
+
+                               {{3}}
 > We should instead start to create languages that can be easy understood and
 > applied by humans, in order to describe their intentions, and let the
 > machine rack its CPU in order to find an appropriate translation.
 
-[^1]: TODO: elab
+[^1]: Project-site: http://www.elab.ovgu.de
 
 ## 2. Adapting OpenSource Development
 
@@ -812,7 +823,7 @@ In the previous sections we had presented syntactic extensions to Markdown. But
 the Internet is full libraries and possibilities that a might be necessary for a
 particular course or topic. In contrast to many other Markdown-interpreters
 LiaScript allows integrating JavaScript, HTML, and CSS directly within the
-document. Additionally, it has support for a Macro-notation that allows
+document. Additionally, it has support for a macro-notation that allows
 automating and thus simplify repetitive and tedious tasks.
 
 ![www](https://media.giphy.com/media/RxR1KghIie2iI/giphy.gif)<!-- width="100%"-->
