@@ -1490,20 +1490,42 @@ class Vec2D {
 
                                 --{{4}}--
 For such JavaScript libraries and also for the use of other functionalities, we
-offer templates that have been implemented via our macro system[^todo]. These
+offer templates that have been implemented via our macro system[^3]. These
 can be used freely and furthermore it also minimizes the breaks when reading the
 original Markdown document.
 
-[^todo]: List of LiaScript templates:
-         https://liascript.github.io/course/?https://raw.githubusercontent.com/liaScript/templates/master/README.md#1
+[^3]: List of LiaScript templates:
+      https://liascript.github.io/course/?https://raw.githubusercontent.com/liaScript/templates/master/README.md#1
 
-## 3.0 Conclusion
+## 3. Conclusion
+
+                                --{{0}}--
+Looking back onto [section 2.](#3), we did not discuss points 3 to 6 so far.
+LiaScript was build around the idea of course-development as an OpenSource
+project.
+
+                                --{{1}}--
+Thus, anything from one course can be used in another course, either by linking
+directly onto a slide or by simply copy and pasting the required parts
+(__req 3__). Furthermore we offer a growing number of templates, which are
+founded on our macro-system, that ease the usage and integration of new and
+complex web technologies (__req 6__).
+
+                                --{{2}}--
+LiaScript currently supports three different styles of rendering modes (see
+[Sec. 2.3.5](#11)), allowing every user to choose his/her preferred type
+(__req 5__). Concerning the preferred course language, translating a single
+text-document is much easier than translating a whole software-project or a
+YouTube-video or podcast and LiaScript offers some options that allow to host
+different language versions of one course at the same project (__req 4__).
 
 
+                                  {{1}}
+* (3.) Reusability --> anything can simply be copied into any course
+* (6.) Integrating new web technologies --> via a macro-system and templates
 
-3. No reusability, parts of one course cannot simply be applied of copied into
-   another project
-4. No support for internationalization/localization (i18n), thus a course cannot
-   simply be translated into another language
-5. No variance in representation
-6. Difficulties in adopting and integrating new web technologies
+
+                                  {{2}}
+* (5.) Variance in representation -> three different modes
+* (4.) Internationalization/localization (i18n) --> supported by specific header
+       tags
