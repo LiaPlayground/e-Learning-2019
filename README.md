@@ -9,8 +9,7 @@ language: en
 
 narrator: US English Female
 
-comment:  Try to write a short comment about
-          your course, multiline is also okay.
+comment:  Presentation for the e-Learning-2019 conference.
 
 
 script:   https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js
@@ -158,11 +157,16 @@ link: https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css
 
 -->
 
-# Liascript: A Domain-Specific-Language for Interactive Online Courses
+# LiaScript: A Domain-Specific-Language for Interactive Online Courses
 
 > __1.__ Use the arrow buttons above for navigation
 >
 > __2.__ Turn on your sound for the text output.
+
+See this project on:
+
+* GitHub: https://github.com/andre-dietrich/e-Learning-2019
+* LiaScript: https://liascript.github.io/course/?https://raw.githubusercontent.com/andre-dietrich/e-Learning-2019/master/README.md#1
 
 LiaScript is an attempt to enable everyone to create free and interactive online
 courses, without the need of being an experienced programmer. Instead, it aims
@@ -174,11 +178,6 @@ text2speech, animations, online programming, the integration of JavaScript, etc.
 as well as its own macro-system that simplifies tedious and repetitive tasks. It
 comes along with its own Just-In-Time compiler that runs in the Browser and
 therefor does not require additional tooling.
-
-See this project on:
-
-* GitHub: 
-* LiaScript:
 
 ## 1. Introduction
 
