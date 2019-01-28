@@ -160,6 +160,10 @@ link: https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css
 
 # Liascript: A Domain-Specific-Language for Interactive Online Courses
 
+> __1.__ Use the arrow buttons above for navigation
+>
+> __2.__ Turn on your sound for the text output.
+
 LiaScript is an attempt to enable everyone to create free and interactive online
 courses, without the need of being an experienced programmer. Instead, it aims
 to bring both parties, software- and course-developers, closer together by
@@ -170,6 +174,11 @@ text2speech, animations, online programming, the integration of JavaScript, etc.
 as well as its own macro-system that simplifies tedious and repetitive tasks. It
 comes along with its own Just-In-Time compiler that runs in the Browser and
 therefor does not require additional tooling.
+
+See this project on:
+
+* GitHub: 
+* LiaScript:
 
 ## 1. Introduction
 
@@ -291,12 +300,13 @@ are still generated from simple and static Markdown documents.
 ### 2.2 What is LiaScript?
 
                              --{{0}}--
-Markdown into static HTML, it is an interpreter that downloads and renders the
-original Markdown document directly within the browser. That means, if the
-Markdown document is updated, the resulting representation will be updated too.
-Thus, there is no need for additional tooling, compiling steps, or server-side
-support.  LiaScript was implemented from scratch with Elm[^2] for efficiency and
-speed, which includes its own parser and runtime-environment.
+In contrast to other Markdown compilers that generate static HTML, LiaScript is
+an interpreter that downloads and renders the original Markdown document
+directly within the browser. That means, if the Markdown document is updated,
+the resulting representation will be updated too. Thus, there is no need for
+additional tooling, compiling steps, or server-side support.  LiaScript was
+implemented from scratch with Elm[^2] for efficiency and speed, which includes
+its own parser and run-time environment.
 
 
 * Online interpreter, that runs directly within the browser
@@ -319,16 +329,19 @@ something new, suitable for interactive online courses and more.
 
 ### 2.3 Extensions to Markdown
 
-> Why does Markdown only support static content? We came a long way from printed
-> books to eBooks for electronic devices, which can still be printed out!
-> Actually it is the same old format, which has been brought to a new device.
-> Although a computer and the Internet give us much more opportunities for
-> visualization, interaction, story telling ...
+> __Why does Markdown only support static content?__
+>
+> We came a long way from written scrolls to printed books to electronic books,
+> which can still be printed out or copied by hand! But, actually it is the same
+> old format that has been brought to a new device. Although a computer and the
+> Internet give us much more opportunities for visualization, interaction, or
+> story telling ...
+
 
 #### 2.3.1 Multimedia
 
                              --{{0}}--
-Markdown supports 2 types of links (onto internal and external ressouces), which can be either direct or formated:
+Markdown supports 2 types of links (onto internal and external resources), which can be either direct or formatted:
 
 
                               {{0-1}}
@@ -340,7 +353,7 @@ __Markdown-Code: (Reference)__
 * Direct reference:
   https://LiaScript.github.io
 
-* Formated reference:
+* Formatted reference:
   [Link to LiaScript](https://LiaScript.github.io)
 ```
 
@@ -349,7 +362,7 @@ __Result:__
 * Direct reference:
   https://LiaScript.github.io
 
-* Formated reference:
+* Formatted reference:
   [Link to LiaScript](https://LiaScript.github.io)
 
 **********************************************************
@@ -491,7 +504,7 @@ This is turned into a nicely rendered diagram, wherein the color and the size of
 dots is defined by the original characters.
 
 
-        <!--style="max-width: 400px"-->
+        <!--style="max-width: 720px"-->
                          Title and axes are optional
     1.9 |    DotS
         |                 ***
@@ -577,10 +590,10 @@ characters and symbols.
 
                               --{{0}}--
 One of the language feature we wanted at most, was an easy way to integrate
-quizzes in different flavors and thus, to give students the possiblity to check
+quizzes in different flavors and thus, to give students the possibility to check
 their knowledge. Quizzes are always associate with double brackets, such that to
 add a text quiz, you only have to enter the solution in double braces and the
-input fild, check and show solution buttons are automatically generated.
+input field, check and show solution buttons are automatically generated.
 
 
                                {{0-1}}
