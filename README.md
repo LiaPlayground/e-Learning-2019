@@ -228,6 +228,7 @@ that can be easily interpreted machines, not by humans.
 
 ## 2. Adapting OpenSource Development
 
+                             --{{0}}--
 More or less, all the aforementioned systems have drawbacks in some of the
 following points:
 
@@ -244,44 +245,87 @@ following points:
 5. No variance in representation
 6. Difficulties in adopting and integrating new web technologies
 
-Pin-points 1 and 2 can be easily solved by applying version control systems such
-as git[^2], svn[^3], mercury[^4], etc. and their web-based hosting services such
-as GitHub[^5], GitLab[^6], SourceForge[^7], etc. to name only a few. All
-required resources, including images, videos, data-sheets, JavaScript and
-CSS-styles, and everything else can be easily uploaded and made available via
-the internet.
-
-[^2]: Todo: git
-[^3]: Todo: svn
-[^4]: Todo: mercury
-[^5]: Todo: github
-[^6]: Todo: gitlab
-[^7]: Todo: SourceForge
-
-### 2.1 LiaScript: Basics
-
-To describe educational content, Markdown can be applied, it is a lightweight
-markup language that is widely applied in OpenSource-projects for documentation.
-Of course, we are not the first ones that apply Markdown to ship educational
-contents, earlier examples are:
-
-* [gitbook](TODO):
-* [common-mark](TODO):
-* [elearnjs](TODO):
-* [ascii-doc](TODO):
-* others:
-
-TODO: github flavored markdown ...
-
-### 2.2 Extensions to Markdown
+                             --{{1}}--
+Pin-points 1 and 2 can be easily solved by applying version control systems like
+[Git](https://git-scm.com), [Subversion](https://subversion.apache.org),
+[Mercurial](https://www.mercurial-scm.org), etc. and their web-based hosting
+services such as [GitHub](https://github.com), [GitLab](https://gitlab.com),
+[SourceForge](https://sourceforge.net), etc. to name only a few. All required
+resources, including images, videos, data-sheets, JavaScript and CSS-styles, and
+everything else can be easily uploaded and made available via the internet.
 
 
-an other representation style ... watch youtube like screen cast with interactive elements backed in
+### 2.1 Why Markdown?
 
-one benefit of using markdonw ... still readable ...
+                             --{{0}}--
+Markdown is a simple meta-markup language used to structure and annotate simple
+text documents. Its goal is to keep the source text easy to read and write, that
+is why it has become more or less the standard documentation-format for
+OpenSource-projects. Originally, it was developed to write HTML content
+efficiently, without having to use a WYSIWYG editor. Directly writing a markup
+language such as HTML is considered too error prone and annoying for the writing
+process. Of course, we are not the first ones that apply Markdown to ship
+educational contents, earlier examples are:
+
+* [GitBook](https://www.gitbook.com):
+  it is a command line tool (and Node.js library) for building (responsive e-)
+  books using GitHub/Git and Markdown
+* [Pandoc](https://pandoc.org):
+  a free parser for multi-document formats, which can be used convert between
+  various document-based file formats and it has also support for and extended version of Markdown
+* [markdown-elearnjs](https://github.com/elb-min-uhh/markdown-elearnjs):
+  converter for Markdown documents into responsive OER websites, which allows integrating quizzes, interactive images, videos, etc.
+* and others ...
+
+                             --{{1}}--
+Of course there are other approaches and systems such as
+[Jupyter Notebooks](https://jupyter.org) must be mentioned in any case, which
+can be applied for literate programming, if the document is download and all
+required resources are installed locally. But the commonality of all system is
+that it's about creating static documents, which, although it is translated into
+a more beautiful format, still have to be read. To our knowledge, our approach
+is the only one that deals with the creation of interactive presentations, which
+are still generated from simple and static Markdown documents.
 
 
-#### 2.2.1 Multimedia
+### 2.2 What is LiaScript?
+
+                             --{{0}}--
+Markdown into static HTML, it is an interpreter that downloads and renders the
+original Markdown document directly within the browser. That means, if the
+Markdown document is updated, the resulting representation will be updated too.
+Thus, there is no need for additional tooling, compiling steps, or server-side
+support.  LiaScript was implemented from scratch with Elm[^2] for efficiency and
+speed, which includes its own parser and runtime-environment.
+
+
+* Online interpreter, that runs directly within the browser
+* Written in Elm[^2]
+* Support for different representation styles (see [Sec. 2.3.5](#11))
+* New Markdown language features:
+  _Quizzes_, _Coding_, _Animations_, _Multimedia_, _ASCII-art_, ...
+
+                             --{{1}}--
+One of our design goals was to support different rendering modes, which covers
+the traditional textbook mode, next to presentations with animations and spoken
+text. Furthermore, we extended the language itself with various features, that
+should transform Markdown from a traditionally static meta-markup approach into
+something new, suitable for interactive online courses and more.
+
+
+[^2]: Elm is a functional programming language that compiles to JavaScript,
+      see the project-website: https://elm-lang.org
+
+
+### 2.3 Extensions to Markdown
+
+> Why does Markdown only support static content? We came a long way from printed
+> books to eBooks for electronic devices, which can still be printed out!
+> Actually it is the same old format, which has been brought to a new device.
+> Although a computer and the Internet give us much more opportunities for
+> visualization, interaction, story telling ...
+
+#### 2.3.1 Multimedia
 
                              --{{0}}--
 Markdown supports 2 types of links (onto internal and external ressouces), which can be either direct or formated:
@@ -354,7 +398,6 @@ __Result:__
 
 
                              --{{3}}--
-
 Due to the combination of images and sound, it is possible to insert videos. One
 of the benefits that lays in this notation is that every common Markdown-viewer
 will still generate a fully working link to these resources.
@@ -417,7 +460,7 @@ This way it is even possible to define complex animation-sequences, while the
 content remains readable with another Markdown-Viewer, since they tend to ignore
 comments.
 
-#### 2.2.2 ASCII-Art 1
+#### 2.3.2 ASCII-Art 1
 
                              --{{0}}--
 From our experience, we know that a lot of produced images represent simple
@@ -463,7 +506,7 @@ dots is defined by the original characters.
         0              x-axis               1
 
 
-#### 2.2.3 ASCII-Art 2
+#### 2.3.3 ASCII-Art 2
 
                              --{{0}}--
 If necessary, it is also possible to depict complex issues, such as graphs,
@@ -530,7 +573,7 @@ characters and symbols.
 *******************************************************************
 
 
-#### 2.2.4 Quizzes
+#### 2.3.4 Quizzes
 
                               --{{0}}--
 One of the language feature we wanted at most, was an easy way to integrate
@@ -709,7 +752,7 @@ input possibilities.
 *******************************************************************************
 
 
-#### 2.2.5 Output Modes
+#### 2.3.5 Output Modes
 
                                --{{0}}--
 In the following two parts are intended to explain, how a section can be divided
@@ -732,7 +775,7 @@ to the explanatory text as in a presentation or to read it like a book.
 3. Textbook (without fragmentation and voice output)
 
 
-##### 2.2.5.1 Fragmentation
+##### 2.3.5.1 Fragmentation
 
                                --{{0}}--
 Defining fragments and revealing them step by step is quite simple, only a
@@ -770,7 +813,7 @@ I am here to the end of slide ...
 {{4}} I come at last.
 
 
-##### 2.2.5.2 Voice Output
+##### 2.3.5.2 Voice Output
 
                                --{{0}}--
 Voice output is implemented with the help of
@@ -816,7 +859,7 @@ I should speak with a UK like accent.
 
 
 
-### 2.3 Extending LiaScript
+### 2.4 Extending LiaScript
 
                                --{{0}}--
 In the previous sections we had presented syntactic extensions to Markdown. But
@@ -828,7 +871,7 @@ automating and thus simplify repetitive and tedious tasks.
 
 ![www](https://media.giphy.com/media/RxR1KghIie2iI/giphy.gif)<!-- width="100%"-->
 
-#### 2.3.1 ... with JavaScript and HTML
+#### 2.4.1 ... with JavaScript and HTML
 
                                --{{0}}--
 It is possible use HTML everywhere and if you want to make use of a certain
@@ -878,11 +921,11 @@ And this is the resulting graph rendered by Chartist ...
   })});
 </script>
 
-#### 2.3.2 ... with Macros
+#### 2.4.2 ... with Macros
 
 
                                --{{0}}--
-In section [2.2.4 Quizzes](#9), the `@input` macro has already been used to mark
+In section [2.3.4 Quizzes](#9), the `@input` macro has already been used to mark
 the replacement for the user input. A macro always starts with an `@` symbol and
 can be defined in the "main" comment of a document. Macros describe simple rules
 for text replacement. For the one-line `@red` macro, everything following the
@@ -1441,3 +1484,14 @@ original Markdown document.
 
 [^todo]: List of LiaScript templates:
          https://liascript.github.io/course/?https://raw.githubusercontent.com/liaScript/templates/master/README.md#1
+
+## 3.0 Conclusion
+
+
+
+3. No reusability, parts of one course cannot simply be applied of copied into
+   another project
+4. No support for internationalization/localization (i18n), thus a course cannot
+   simply be translated into another language
+5. No variance in representation
+6. Difficulties in adopting and integrating new web technologies
