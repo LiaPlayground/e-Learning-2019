@@ -3,7 +3,7 @@ author:   André Dietrich, Sebastian Zug
 
 email:    andre.dietrich@ovgu.de
 
-version:  0.0.1
+version:  0.0.2
 
 language: en
 
@@ -11,134 +11,11 @@ narrator: US English Female
 
 comment:  Presentation for the e-Learning-2019 conference.
 
-
-script:   https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js
-
-@Rextester.__eval
-<script>
-//var result = null;
-var error  = false;
-
-console.log = function(e){ send.lia("log", JSON.stringify(e), [], true); };
-
-function grep_(type, output) {
-  try {
-    let re_s = ":(\\d+):(\\d+): "+type+": (.+)";
-
-    let re_g = new RegExp(re_s, "g");
-    let re_i = new RegExp(re_s, "i");
-
-    let rslt = output.match(re_g);
-
-    let i = 0;
-    for(i = 0; i < rslt.length; i++) {
-        let e = rslt[i].match(re_i);
-
-        rslt[i] = { row : e[1]-1, column : e[2], text : e[3], type : type};
-    }
-    return [rslt];
-  } catch(e) {
-    return [];
-  }
-}
-
-$.ajax ({
-    url: "https://rextester.com/rundotnet/api",
-    type: "POST",
-    timeout: 10000,
-    data: { LanguageChoice: @0,
-            Program: `@input`,
-            Input: `@1`,
-            CompilerArgs : @2}
-    }).done(function(data) {
-        if (data.Errors == null) {
-            let warnings = grep_("warning", data.Warnings);
-
-            let stats = "\n-------Stat-------\n"+data.Stats.replace(/, /g, "\n");
-
-            if(data.Warnings)
-              stats = "\n-------Warn-------\n"+data.Warnings + stats;
-
-            send.lia("log", data.Result+stats, warnings, true);
-            send.lia("eval", "LIA: stop");
-
-        } else {
-            let errors = grep_("error", data.Errors);
-
-            let stats = "\n-------Stat-------\n"+data.Stats.replace(/, /g, "\n");
-
-            if(data.Warning)
-              stats = data.Errors + data.Warnings + stats;
-            else
-              stats = data.Errors + data.Warnings + stats;
-
-            send.lia("log", stats, errors, false);
-            send.lia("eval", "LIA: stop");
-        }
-    }).fail(function(data, err) {
-        send.lia("log", err, [], false);
-        send.lia("eval", "LIA: stop");
-    });
-
-"LIA: wait"
-</script>
-@end
-
-
-@Rextester.eval: @Rextester.__eval(6, ,"-Wall -std=gnu99 -O2 -o a.out source_file.c")
-
-@Rextester.eval_params: @Rextester.__eval(6, ,"@0")
-
-@Rextester.eval_input: @Rextester.__eval(6,`@input(1)`,"-Wall -std=gnu99 -O2 -o a.out source_file.c")
-
-
-script:   https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.6/processing.min.js
-
-
-@processing
-<script>
-let container = document.getElementById('sketch-container-@0');
-
-container.innerHTML = "";
-
-let canvas = document.createElement('canvas');
-canvas.id = 'sketch-@0';
-
-container.appendChild(canvas);
-
-if(!window["processing"]){
-    window["processing"] = {};
-    window["running"] = null;
-}
-
-if(window["running"]) {
-  window["processing"][window["running"]].exit();
-
-}
-
-let sketch = Processing.compile(`@input`);
-
-window["processing"]["@0"] = new Processing(canvas, sketch);
-window["running"] = "@0";
-</script>
-
-<div id="sketch-container-@0"></div>
-
-<script>
-if(window["running"]) {
-    window["processing"][window["running"]].exit();
-    document.getElementById("sketch-container-"+window["running"]).innerHTML = "";
-
-    window["running"] = null;
-}
-</script>
-@end
-
+import:   https://raw.githubusercontent.com/liaScript/rextester_template/master/README.md
+          https://raw.githubusercontent.com/liaScript/processing_template/master/README.md
 
 script:   https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js
-
-link: https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css
-
+link:     https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css
 
 @Chartist
 <div class="ct-chart ct-golden-section" id="chart@0">
@@ -152,8 +29,6 @@ link: https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css
 @end
 
 @red: <b style="color: red"> @0</b>
-
-
 
 -->
 
@@ -190,8 +65,7 @@ Arduino-Bots could be used to teach programming, sensing, navigation, dive into
 operating systems or even to apply artificial intelligence. Thus, the real
 problem was to develop an extendable and adaptable system for creating courses
 (instead of a single Web-App) with different objectives and for students with
-different backgrounds, which only interface with our hardware other
-external resources.
+different backgrounds.
 
                               {{0-1}}
 ![robot](pics/robot.jpg)<!-- width="100%" -->
@@ -211,20 +85,21 @@ starting to develop his or her own online course.
                              --{{2}}--
 Screen- or pod-casts are not a real alternative, since they are expensive and
 time-consuming in production, not easy to change or translate, and require
-additional skills in movie cutting. That is why platforms such as Udacity or
-Coursea invest a lot of effort and money in high-quality course productions,
-which is comparable to movie productions, including screenplays, actors,
-different sets and locations. Fortunately, there are also course platforms that
-try to ease the course development for non-experts, such as Ilias, edX, Moodle,
-amongst others.
+additional skills in movie cutting. That is why platforms such as
+[Udacity](https://eu.udacity.com) or [Coursea](https://www.coursera.org) invest
+a lot of effort and money in high-quality course productions, which is
+comparable to movie productions, including screenplays, actors, different sets
+and locations. Fortunately, there are so called Learing Management Systems (LMS)
+[(Dobre, 2015)](#19 "Learning Management Systems for higher education-an overview of available options for Higher Education Organizations")
+that try to ease the course development.
 
 
                              --{{3}}--
-But how is such a kind of "simplicity" achieved? Mostly, by offering
-integrated configuration-systems and editors, that shall enable the user to
-create a course with a lot of buttons and menus, sub-sub-menus, and masks, whose
-only purpose is to hide the non-intuitive syntax and semantics of a language
-that can be easily interpreted machines, not by humans.
+But how is such a kind of "simplicity" achieved? Mostly, by offering integrated
+configuration-systems, editors and authoring-tools, that shall enable the user
+to create a course with a lot of buttons and menus, sub-sub-menus, and masks,
+whose only purpose is to hide the non-intuitive syntax and semantics of a
+language that can be easily interpreted machines, not by humans.
 
 
                                {{3}}
@@ -234,83 +109,87 @@ that can be easily interpreted machines, not by humans.
 
 [^1]: Project-site: http://www.elab.ovgu.de
 
-## 2. Adapting OpenSource Development
+## 2. Adapting Open-Source Development
 
                              --{{0}}--
 More or less, all the aforementioned systems have drawbacks in some of the
 following points:
 
-**Requirements from an OpenSource perspective**
+**Requirements from an Open-Source perspective**
 
 1. No support for larger course developer-teams, including those who develop
    additional functionality and those who provide content
 2. No versioning, in contrast to Wikipedia as a single source of truth, content
    shall be provided in different "styles" for heterogeneous groups of students
-3. No reusability, parts of one course cannot simply be applied of copied into
+3. No re-usability, parts of one course cannot simply be applied of copied into
    another project
 4. No support for internationalization/localization (i18n), thus a course cannot
    simply be translated into another language
 5. No variance in representation
 6. Difficulties in adopting and integrating new web technologies
 
-                             --{{1}}--
-Pin-points 1 and 2 can be easily solved by applying version control systems like
-[Git](https://git-scm.com), [Subversion](https://subversion.apache.org),
-[Mercurial](https://www.mercurial-scm.org), etc. and their web-based hosting
-services such as [GitHub](https://github.com), [GitLab](https://gitlab.com),
-[SourceForge](https://sourceforge.net), etc. to name only a few. All required
-resources, including images, videos, data-sheets, JavaScript and CSS-styles, and
-everything else can be easily uploaded and made available via the internet.
 
+                             --{{1}}--
+Pin-points 1 and 2 can be easily solved by applying a purely text-based approach
+for the course development and version control systems[^3]
+[(Zhou et al. 2018)](#19 "A collaborative and open solution for large‐scale online learning").
+All required resources, including images, videos, data-sheets, JavaScript and
+CSS-styles, and everything else can be easily uploaded and made available via
+the internet.
+
+[^3]: E.g. [Git](https://git-scm.com) and its web-based hosting services
+      [GitHub](https://github.com) or [GitLab](https://gitlab.com).
 
 ### 2.1 Why Markdown?
 
                              --{{0}}--
-Markdown is a simple meta-markup language used to structure and annotate simple
-text documents. Its goal is to keep the source text easy to read and write, that
-is why it has become more or less the standard documentation-format for
-OpenSource-projects. Originally, it was developed to write HTML content
-efficiently, without having to use a WYSIWYG editor. Directly writing a markup
-language such as HTML is considered too error prone and annoying for the writing
-process. Of course, we are not the first ones that apply Markdown to ship
-educational contents, earlier examples are:
+Markdown [(Wikipedia, 2019)](#19 "Markdown") is a simple meta-markup language
+used to structure and annotate simple text documents. Its goal is to keep the
+source text easy to read and write, that is why it has become more or less the
+standard documentation-format for Open-Source projects. Originally, it was
+developed to write HTML content efficiently, without having to use a WYSIWYG[^2]
+editor. Directly writing a markup language such as HTML is considered too error
+prone and annoying for the writing process. Of course, we are not the first ones
+that apply Markdown to ship educational contents, earlier examples are:
 
-* [GitBook](https://www.gitbook.com):
-  it is a command line tool (and Node.js library) for building (responsive e-)
-  books using GitHub/Git and Markdown
-* [Pandoc](https://pandoc.org):
-  a free parser for multi-document formats, which can be used convert between
-  various document-based file formats and it has also support for and extended version of Markdown
-* [markdown-elearnjs](https://github.com/elb-min-uhh/markdown-elearnjs):
-  converter for Markdown documents into responsive OER websites, which allows integrating quizzes, interactive images, videos, etc.
-* and others ...
+* __[GitBook](https://www.gitbook.com)/[Pandoc](https://pandoc.org)__:
+  free Markdown parser that have been widely applied in OER generation
+  [(Ovadia, 2019)](#19 "Addressing the Technical Challenges of Open Educational Resources")
+* __[elearn-js](https://github.com/elb-min-uhh/markdown-elearnjs)__:
+  converter for Markdown documents into responsive OER websites, which allows
+  integrating quizzes, interactive images, videos, etc.
+  [(Heinecke, 2016)](#19 "Produktion digitaler Skripte")
+* __[Iodide](https://alpha.iodide.io)__:
+  [Jupyter Notebooks](https://jupyter.org) brought to the internet, next to OER
+  it can be interpreted as an example of literate programming
+
 
                              --{{1}}--
-Of course there are other approaches and systems such as
-[Jupyter Notebooks](https://jupyter.org) must be mentioned in any case, which
-can be applied for literate programming, if the document is download and all
-required resources are installed locally. But the commonality of all system is
-that it's about creating static documents, which, although it is translated into
-a more beautiful format, still have to be read. To our knowledge, our approach
-is the only one that deals with the creation of interactive presentations, which
-are still generated from simple and static Markdown documents.
+Of course there are other approaches that have to be mentioned
+[(McKiernan, 2017)](#19 "Imagining the 'open' university: Sharing scholarship to improve research and education"),
+but the commonality of all system is that it's about creating static documents,
+which, although it is translated into a more beautiful format, still have to be
+read. To our knowledge, our approach is the only one that deals with the
+creation of interactive presentations, which are still generated from simple and
+static Markdown documents.
 
+[^2]: Stands for: _What You See Is What You Get_
 
 ### 2.2 What is LiaScript?
 
                              --{{0}}--
 In contrast to other Markdown compilers that generate static HTML, LiaScript is
 an interpreter that downloads and renders the original Markdown document
-directly within the browser. That means, if the Markdown document is updated,
-the resulting representation will be updated too. Thus, there is no need for
-additional tooling, compiling steps, or server-side support.  LiaScript was
-implemented from scratch with Elm[^2] for efficiency and speed, which includes
+directly within the browser. That means, if the document is updated, the
+resulting representation will be updated too. Thus, there is no need for
+additional tooling, compiling steps, or server-side support. LiaScript was
+implemented from scratch with Elm[^3] for efficiency and speed, which includes
 its own parser and run-time environment.
 
-
 * Online interpreter, that runs directly within the browser
-* Written in Elm[^2]
-* Support for different representation styles (see [Sec. 2.3.5](#11))
+* Written in Elm[^3]
+* Support for different representation styles
+  (see [Sec. 2.3.5](#11 "Output Modes"))
 * New Markdown language features:
   _Quizzes_, _Coding_, _Animations_, _Multimedia_, _ASCII-art_, ...
 
@@ -318,11 +197,11 @@ its own parser and run-time environment.
 One of our design goals was to support different rendering modes, which covers
 the traditional textbook mode, next to presentations with animations and spoken
 text. Furthermore, we extended the language itself with various features, that
-should transform Markdown from a traditionally static meta-markup approach into
+should transform Markdown from a traditionally static markup approach into
 something new, suitable for interactive online courses and more.
 
 
-[^2]: Elm is a functional programming language that compiles to JavaScript,
+[^3]: Elm is a functional programming language that compiles to JavaScript,
       see the project-website: https://elm-lang.org
 
 
@@ -333,14 +212,15 @@ something new, suitable for interactive online courses and more.
 > We came a long way from written scrolls to printed books to electronic books,
 > which can still be printed out or copied by hand! But, actually it is the same
 > old format that has been brought to a new device. Although a computer and the
-> Internet give us much more opportunities for visualization, interaction, or
+> Internet give us much more opportunities for visualization, interaction, an
 > story telling ...
 
 
 #### 2.3.1 Multimedia
 
                              --{{0}}--
-Markdown supports 2 types of links (onto internal and external resources), which can be either direct or formatted:
+Markdown supports 2 types of links (onto internal and external resources), which
+can be either direct or formatted:
 
 
                               {{0-1}}
@@ -408,12 +288,10 @@ __Result:__
 
 *******************************************************************************
 
-
                              --{{3}}--
 Due to the combination of images and sound, it is possible to insert videos. One
 of the benefits that lays in this notation is that every common Markdown-viewer
 will still generate a fully working link to these resources.
-
 
                               {{3-4}}
 *******************************************************************************
@@ -469,18 +347,18 @@ after 3 seconds.
 
                              --{{5}}--
 This way it is even possible to define complex animation-sequences, while the
-content remains readable with another Markdown-Viewer, since they tend to ignore
+content remains readable with another Markdown-viewer, since they tend to ignore
 comments.
 
 #### 2.3.2 ASCII-Art 1
 
                              --{{0}}--
 From our experience, we know that a lot of produced images represent simple
-diagrams that represent functions, some signal waves, or some trends. These have
-to be generated with Excel, Gnuplot, Matlab or other tools, and to be exported,
-which makes it also difficult to change them or to translate labels. LiaScript
-offers the opportunity to draw diagrams directly within the document. Such
-diagrams can be easily adapted and it is necessary to switch to another "tool".
+diagrams that represent functions, signal waves, trends, etc. These have to be
+generated with Excel, Gnuplot, Matlab or other tools, and to be exported, which
+makes it also difficult to change them or to translate labels. LiaScript offers
+the opportunity to draw diagrams directly within the document. Such diagrams can
+be easily adapted and it is not necessary to switch to another "tool".
 
 
 ``` HTML
@@ -589,10 +467,10 @@ characters and symbols.
 
                               --{{0}}--
 One of the language feature we wanted at most, was an easy way to integrate
-quizzes in different flavors and thus, to give students the possibility to check
+quizzes in different flavors and thus, to give learners the possibility to check
 their knowledge. Quizzes are always associate with double brackets, such that to
 add a text quiz, you only have to enter the solution in double braces and the
-input field, check and show solution buttons are automatically generated.
+input field, check-, and resolve-buttons are generated automatically.
 
 
                                {{0-1}}
@@ -614,13 +492,13 @@ What did the **fish** say when he hit a **concrete wall**?
 Some might adapt the question to handle the ambiguity in this case. But let us
 try out what LiaScript has to offer. It is either possible to add hints, by
 adding question-marks in double brackets and let the user decide if he needs
-help, by clicking on the associated button in the rendered course. The optional
-`script`-tag allows to check the input, in this case to trim it and to transform
-it lower-case and finally to compare it with different allowed solution.
-Therefor the `@input`-macro gets replaced by the current user input. The
-trailing Markdown-blocks surrounded by two lines of stars show a more detailed
-explanation, which appears either if the user input was correct or if the user
-clicked onto the resolve button.
+help, by clicking onto the associated button in the rendered course. The
+optional `script`-tag allows to check the input, in this case to trim it and to
+transform it lower-case and finally to compare it with different possible
+solution. Therefor the `@input`-macro gets replaced by the current user input.
+The trailing Markdown-blocks surrounded by two lines of stars show a more
+detailed explanation, which appears either if the user input was correct or if
+the user clicked onto the resolve button.
 
                                 {{1-2}}
 *******************************************************************************
@@ -776,10 +654,10 @@ into several fragments and how speech output can be generated.
 
                                --{{1}}--
 If you are using the online rendered version of this course at LiaScript
-website. You will, probably have noticed that there is a button in the upper
-right corner. It allows switching between three different display modes. It
-allows to let the user decide for himself, if he or she rather wants to listen
-to the explanatory text as in a presentation or to read it like a book.
+website, then you will probably have noticed that there is a button in the upper
+right corner. It allows switching between three different display modes. The
+user can decide, if he or she rather wants to listen to the explanatory text as
+in a presentation or to read it like a book.
 
                                  {{1}}
 1. Presentation (with voice output)
@@ -791,14 +669,14 @@ to the explanatory text as in a presentation or to read it like a book.
 
                                --{{0}}--
 Defining fragments and revealing them step by step is quite simple, only a
-number has in double braces has to put in front of a Markdown-block. Fragments
+number in double braces has to be put in front of a Markdown-block. Fragments
 with only one number will sustain until the end of a slide. A point of
 disappearance can be defined by putting a minus and a second number into double
 braces. Inline fragments can be defined by putting the fragment number and the
 elements to appear into successive braces. And it is also possible to attach
 different blocks to the same fragment number, either by attaching a number to
 every block or by putting them into a body of stars, as it was done with the
-solution in section [quizzes](#9).
+solution in [Sec. 2.3.4](#10 "Quizzes").
 
 ``` markdown
                   {{1}}
@@ -833,11 +711,10 @@ Voice output is implemented with the help of
 at the beginning of the document, it is possible to define the default voice for
 a course. This voice can be changed at every section as well as within every
 voice comment itself. Such comments are treated as extended fragments, which are
-used explain certain fragments in more detail. Therefor, they are defined
-similar to block-fragments surrounded by minuses, whereby only paragraphs are
-allowed to follow. Depending on the presentation mode, these texts are either
-displayed within the slide or read out loud. This way it is also possible to
-implement a dialog between different persons.
+used to explain certain fragments in more detail. Therefor, they are defined
+similar to block-fragments surrounded by minuses. Depending on the presentation
+mode, these texts are either displayed within the slide or read out loud. This
+way it is also possible to implement a dialog between different persons.
 
 
 ``` markdown
@@ -895,7 +772,7 @@ keyword `link` style-sheets can be loaded.
 ``` html
 <!--
 script: https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js
-https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js
+        https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js
 
 link:   https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css
 -->
@@ -937,7 +814,7 @@ And this is the resulting graph rendered by Chartist ...
 
 
                                --{{0}}--
-In section [2.3.4 Quizzes](#9), the `@input` macro has already been used to mark
+In [Sec. 2.3.4](#10 "Quizzes"), the `@input` macro has already been used to mark
 the replacement for the user input. A macro always starts with an `@` symbol and
 can be defined in the "main" comment of a document. Macros describe simple rules
 for text replacement. For the one-line `@red` macro, everything following the
@@ -1026,14 +903,14 @@ highlighting, which enables the interpretation of data.
                                  {{4}}
 *******************************************************************************
 
-``` markdown
-` ` `json @Chartist(id2)
+```` markdown
+```json @Chartist(id2)
 labels: [1, 2, 3, 4, 5, 6, 7],
 series: [
   [100, 120, 180, 200, 0, 12, -1],
   [10, 20, 30, 40, 50, 90, -100]]
-` ` `
 ```
+````
 
 ---
 
@@ -1059,22 +936,22 @@ code-block gets substituted at this position.
 
 
                                 {{0-1}}
-``` markdown
-` ` ` js     -EvalScript.js
+```` markdown
+``` js     -EvalScript.js
 let who = data.first_name + " " + data.last_name;
 
 if(data.online) {
   who + " is online"; }
 else {
   who + " is NOT online"; }
-` ` `
-` ` ` json    +Data.json
+```
+``` json    +Data.json
 {
   "first_name" :  "Sammy",
   "last_name"  :  "Shark",
   "online"     :  true
 }
-` ` `
+```
 <script>
   // insert the JSON dataset into the local variable data
   let data = @input(1);
@@ -1082,7 +959,7 @@ else {
   // eval the script that uses this dataset
   eval(`@input(0)`);
 </script>
-```
+````
 
                                --{{1}}--
 The LiaScript interpretation of these blocks then looks like this. All files are
@@ -1116,7 +993,7 @@ else {
 
 
                                --{{2}}--
-As shown in section [2.3 Extending LiaScript](#13), it is also possible to
+As shown in [Sec. 2.3](#13 "Extending LiaScript"), it is also possible to
 integrate different JavaScript functionalities and libraries, so that also
 different programming languages can be supported. The example below shows a
 simple _C_ program that can be compiled and executed using the
@@ -1139,7 +1016,7 @@ int main()
   return 0;
 }
 ```
-@Rextester.eval
+@Rextester.C(true)
 
 
                                --{{3}}--
@@ -1485,39 +1362,40 @@ class Vec2D {
   }
 }
 ```
-@processing(ABSTRACT01js)
+@Processing.eval
 
 
                                 --{{4}}--
 For such JavaScript libraries and also for the use of other functionalities, we
-offer templates that have been implemented via our macro system[^3]. These
+offer templates that have been implemented via our macro system[^4]. These
 can be used freely and furthermore it also minimizes the breaks when reading the
 original Markdown document.
 
-[^3]: List of LiaScript templates:
+[^4]: List of LiaScript templates:
       https://liascript.github.io/course/?https://raw.githubusercontent.com/liaScript/templates/master/README.md#1
 
 ## 3. Conclusion
 
                                 --{{0}}--
-Looking back onto [section 2.](#3), we did not discuss points 3 to 6 so far.
-LiaScript was build around the idea of course-development as an OpenSource
-project.
+Looking back onto [Sec. 2](#3 "Adapting Open-Source Development"), we did not
+discuss points 3 to 6 so far. LiaScript was build around the idea of
+course-development as Open-Source projects.
 
                                 --{{1}}--
 Thus, anything from one course can be used in another course, either by linking
 directly onto a slide or by simply copy and pasting the required parts
-(__req 3__). Furthermore we offer a growing number of templates, which are
+(__req 3__). Furthermore, we offer a growing number of templates, which are
 founded on our macro-system, that ease the usage and integration of new and
 complex web technologies (__req 6__).
 
                                 --{{2}}--
 LiaScript currently supports three different styles of rendering modes (see
-[Sec. 2.3.5](#11)), allowing every user to choose his/her preferred type
-(__req 5__). Concerning the preferred course language, translating a single
-text-document is much easier than translating a whole software-project or a
-YouTube-video or podcast and LiaScript offers some options that allow to host
-different language versions of one course at the same project (__req 4__).
+[Sec. 2.3.5](#11 "Output Modes")), allowing every user to choose his/her
+preferred type (__req 5__). Concerning the preferred course language,
+translating a single text-document is much easier than translating a whole
+software-project or a YouTube-video or podcast and LiaScript offers some options
+that allow to host different language versions of one course at the same project
+(__req 4__).
 
 
                                   {{1}}
@@ -1529,3 +1407,32 @@ different language versions of one course at the same project (__req 4__).
 * (5.) Variance in representation -> three different modes
 * (4.) Internationalization/localization (i18n) --> supported by specific header
        tags
+
+## References
+
+Dobre, Iuliana. (2015).
+_Learning Management Systems for higher education-an overview of available options for Higher Education Organizations._
+In: Procedia-Social and Behavioral Sciences 180, pp. 313-320.
+
+Heinecke, Michael. (2016).
+_Production digitaler Skripte._
+[online] Available at: http://www.sumo.uni-hamburg.de/DigitaleSkripte/
+URL [Accessed Date 26 Mar. 2019].
+
+McKiernan, Erin C. (2017).
+_Imagining the "open" university: Sharing scholarship to improve research and education._
+In: PLoS biology, 15.10.
+
+Ovadia, Steven. (2019).
+_Addressing the Technical Challenges of Open Educational Resources._
+In: Portal - Libraries and the Academy, 19.1, pp. 79-93.
+
+Wikipedia contributors. (2019).
+_Markdown._
+[online] Available at:
+https://en.wikipedia.org/wiki/Markdown
+URL [Accessed Date 26 Mar. 2019].
+
+Zhou, Qingguo, et al. (2018).
+_A collaborative and open solution for large‐scale online learning._
+In: Computer Applications in Engineering Education, 26.6, pp. 2266-2281.
