@@ -299,7 +299,7 @@ will still generate a fully working link to these resources.
 __LiaScript-Code: (Video)__
 
 ``` markdown
-!?[The eLab-Project on YouTube](https://www.youtube.com/embed/bICfKRyKTwE)<!--
+!?[The eLab-Project on YouTube](https://www.youtube.com/watch?v=bICfKRyKTwE)<!--
 width="560px"
 height="315px"
 -->
@@ -307,7 +307,7 @@ height="315px"
 
 __Result:__
 
-!?[The eLab-Project on YouTube](https://www.youtube.com/embed/bICfKRyKTwE)<!--width="560px" height="315px"-->
+!?[The eLab-Project on YouTube](https://www.youtube.com/watch?v=bICfKRyKTwE)<!--width="560px" height="315px"-->
 
 *******************************************************************************
 
