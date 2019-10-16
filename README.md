@@ -35,7 +35,7 @@ link:     https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css
 # LiaScript: A Domain-Specific-Language for Interactive Online Courses
 
 > __1.__ Use the arrow buttons above for navigation
->
+> 
 > __2.__ Turn on your sound for the text output.
 
 See this project on:
