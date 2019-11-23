@@ -3,13 +3,17 @@ author:   André Dietrich, Sebastian Zug
 
 email:    andre.dietrich@ovgu.de
 
-version:  0.0.2
+version:  0.0.3
 
 language: en
 
 narrator: US English Female
 
-comment:  Presentation for the e-Learning-2019 conference.
+logo:     https://cdn.pixabay.com/photo/2017/01/11/17/51/porto-1972450_960_720.jpg
+
+comment:  This is a the course-demo of a paper that was presented at the
+          e-Learning-2019 conference in Porto. Actually this is the entire paper
+          made interactive.
 
 import:   https://raw.githubusercontent.com/liaScript/rextester_template/master/README.md
           https://raw.githubusercontent.com/liaScript/processing_template/master/README.md
@@ -35,7 +39,7 @@ link:     https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css
 # LiaScript: A Domain-Specific-Language for Interactive Online Courses
 
 > __1.__ Use the arrow buttons above for navigation
-> 
+>
 > __2.__ Turn on your sound for the text output.
 
 See this project on:
